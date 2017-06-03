@@ -9,4 +9,4 @@ Design goals:
 
 3) Each week, the visual must be updated, shading red characters that die during that week's episode.
 
-4) Display current ranking based on matches of number of adjacent bingo matches.
+4) Display current ranking based on number of adjacent bingo block matches.
