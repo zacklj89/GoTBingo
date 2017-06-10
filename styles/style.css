@@ -30,14 +30,10 @@ head {
   height: 106.25px;
   margin-right: 20px;
   float: left;
-  border-radius: 6px;
+  border-radius: 9px;
   background: rgba(238, 228, 218, 1.0); }
   .grid-cell:last-child {
-    margin-right: 0; }
-  .grid-cell:active {
-  background-color:  rgba(238, 228, 218, 0.5);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+    margin-right: 0; 
 }
 
 .list-container {
