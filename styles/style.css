@@ -15,7 +15,7 @@ head {
 
 .grid-container {
   position: absolute;
-  z-index: 1; }
+  z-index: -1; }
 
 .grid-row {
   margin-bottom: 10px; }

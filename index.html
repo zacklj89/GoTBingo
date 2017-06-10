@@ -6,146 +6,164 @@
     <link rel="stylesheet" rev="stylesheet" href="styles/style.css" />
     <!-- <script type="text/javascript" src="scripts/main.js"/> -->
     <img src="images/AGoTBanner.jpg" alt="My test image">
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("srcImgID", ev.target.id);
+    ev.dataTransfer.setData("srcNameID", ev.target.nextElementSibling.id);
+    ev.dataTransfer.setData("srcParentElementID", ev.target.parentElement.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+
+    var srcImgID = ev.dataTransfer.getData("srcImgID");
+    var srcNameID = ev.dataTransfer.getData("srcNameID");
+    var srcParentElementID = ev.dataTransfer.getData("srcParentElementID");
+
+    var dstImgID = ev.target.id;
+    var dstNameID = ev.target.nextElementSibling.id;
+    var dstParentElementID = ev.target.parentElement.id;
+
+    var srcImgElement = document.getElementById(srcImgID);
+    var srcNameElement = document.getElementById(srcNameID);
+    var srcParentElement = document.getElementById(srcParentElementID);
+
+    var dstImgElement = document.getElementById(dstImgID);
+    var dstNameElement = document.getElementById(dstNameID);
+    var dstParentElement = document.getElementById(dstParentElementID);
+
+    srcParentElement.appendChild(dstImgElement);
+    srcParentElement.appendChild(dstNameElement);
+
+    dstParentElement.appendChild(srcImgElement);
+    dstParentElement.appendChild(srcNameElement);
+}
+</script>
+
 </head>
 <body style="background-color:#0000FF">
-    <div class="grid-container" draggable="false">
-        <div class="grid-row" draggable="false">
-            <div class="grid-cell" draggable="true">
-                <img src="images/stark_arya.jpg" class="char_img">
-                <div class="char_name"> Arya Stark </div>
+    <div id="grid" class="grid-container">
+        <div id="gridrow1" class="grid-row">
+            <div id="gridcell1" class="grid-cell">
+                <img id="stark_arya_img" src="images/stark_arya.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="stark_arya_name" class="char_name"> Arya Stark </div>
             </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/stark_catelyn.jpg" class="char_img">
-                <div class="char_name"> Catelyn Stark </div>
+            <div id="gridcell2" class="grid-cell">
+                <img id="stark_catelyn_img" src="images/stark_catelyn.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="stark_catelyn_name" class="char_name"> Catelyn Stark </div>
             </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/stark_ned.jpg" class="char_img">
-                <div class="char_name"> Ned Stark </div>
+            <div id="gridcell3" class="grid-cell">
+                <img id="stark_ned_img" src="images/stark_ned.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="stark_ned_name" class="char_name"> Ned Stark </div>
             </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/stark_robb.jpg" class="char_img">
-                <div class="char_name"> Robb Stark </div>
-            </div>
-        </div>
-        <div class="grid-row" draggable="false">
-            <div class="grid-cell" draggable="true">
-                <img src="images/lannister_jaime.jpg" class="char_img">
-                <div class="char_name"> Jaime Lannister </div>
-            </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/snow_jon.jpg" class="char_img">
-                <div class="char_name"> Jon Snow </div>
-            </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/stark_sansa.jpg" class="char_img">
-                <div class="char_name"> Sansa Stark </div>
-            </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/targaryen_daenerys.jpg" class="char_img">
-                <div class="char_name"> Daenerys Targaryen </div>
+            <div id="gridcell4" class="grid-cell">
+                <img id="stark_robb_img" src="images/stark_robb.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="stark_robb_name" class="char_name"> Robb Stark </div>
             </div>
         </div>
-        <div class="grid-row" draggable="false">
-            <div class="grid-cell" draggable="true">
-                <img src="images/lannister_tywin.jpg" class="char_img">
-                <div class="char_name"> Tywin Lannister </div>
+        <div id="gridrow2" class="grid-row">
+            <div id="gridcell5" class="grid-cell">
+                <img id="lannister_jaime_img" src="images/lannister_jaime.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="lannister_jaime_name" class="char_name"> Jaime Lannister </div>
             </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/baratheon_robert.jpg" class="char_img">
-                <div class="char_name"> Robert Baratheon </div>
+            <div id="gridcell6" class="grid-cell">
+                <img id="snow_jon_img" src="images/snow_jon.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="snow_jon_name" class="char_name"> Jon Snow </div>
             </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/lannister_cersei.jpg" class="char_img">
-                <div class="char_name"> Cersei Lannister </div>
+            <div id="gridcell7" class="grid-cell">
+                <img id="stark_sansa_img" src="images/stark_sansa.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="stark_sansa_name" class="char_name"> Sansa Stark </div>
             </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/tyrell_margaery.jpg" class="char_img">
-                <div class="char_name"> Margaery Tyrell </div>
-            </div>
-        </div>
-        <div class="grid-row" draggable="false">
-            <div class="grid-cell" draggable="true">
-                <img src="images/aguilar_christopher.jpg" class="char_img">
-                <div class="char_name"> Christopher Aguilar </div>
-            </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/aguilar_edward.jpg" class="char_img">
-                <div class="char_name"> Edward Aguilar </div>
-            </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/aguilar_reynolds.jpg" class="char_img">
-                <div class="char_name"> Reynolds Aguilar </div>
-            </div>
-            <div class="grid-cell" draggable="true">
-                <img src="images/zack_and_aubrey.jpg" class="char_img">
-                <div class="char_name"> Zack and Aubrey </div>
+            <div id="gridcell8" class="grid-cell">
+                <img id="targaryen_daenerys_img" src="images/targaryen_daenerys.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="targaryen_daenerys_name" class="char_name"> Daenerys Targaryen </div>
             </div>
         </div>
-    </div>
-
-    <div class="list-container" draggable="false">
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/lannister_tyrion.jpg" class="char_img">
-                <div class="char_name"> Tyrion Lannister </div>
+        <div id="gridrow3" class="grid-row">
+            <div id="gridcell9" class="grid-cell">
+                <img id="lannister_tywin_img" src="images/lannister_tywin.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="lannister_tywin_name" class="char_name"> Tywin Lannister </div>
+            </div>
+            <div id="gridcell10" class="grid-cell">
+                <img id="baratheon_robert_img" src="images/baratheon_robert.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="baratheon_robert_name" class="char_name"> Robert Baratheon </div>
+            </div>
+            <div id="gridcell11" class="grid-cell">
+                <img id="lannister_cersei_img" src="images/lannister_cersei.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="lannister_cersei_name" class="char_name"> Cersei Lannister </div>
+            </div>
+            <div id="gridcell12" class="grid-cell">
+                <img id="tyrell_margaery_img" src="images/tyrell_margaery.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="tyrell_margaery_name" class="char_name"> Margaery Tyrell </div>
             </div>
         </div>
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/brienne_of_tarth.jpg" class="char_img">
-                <div class="char_name"> Brienne of Tarth </div>
+        <div id="gridrow4" class="grid-row">
+            <div id="gridcell13" class="grid-cell">
+                <img id="aguilar_christopher_img" src="images/aguilar_christopher.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="aguilar_christopher_name" class="char_name"> Christopher Aguilar </div>
             </div>
-        </div>
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/ygritte.jpg" class="char_img">
-                <div class="char_name"> Ygritte </div>
+            <div id="gridcell14" class="grid-cell">
+                <img id="aguilar_edward_img" src="images/aguilar_edward.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="aguilar_edward_name" class="char_name"> Edward Aguilar </div>
             </div>
-        </div>
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/melisandre.jpg" class="char_img">
-                <div class="char_name"> Melisandre </div>
+            <div id="gridcell15" class="grid-cell">
+                <img id="aguilar_reynolds_img" src="images/aguilar_reynolds.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="aguilar_reynolds_name" class="char_name"> Reynolds Aguilar </div>
             </div>
-        </div>
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/clegane_sandor.jpg" class="char_img">
-                <div class="char_name"> Sandor Clegane </div>
-            </div>
-        </div>
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/khal_drogo.jpg" class="char_img">
-                <div class="char_name"> Khal Drogo </div>
-            </div>
-        </div>
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/null_cell.jpg" class="char_img">
-                <div class="char_name"> null_cell </div>
-            </div>
-        </div>
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/null_cell.jpg" class="char_img">
-                <div class="char_name"> null_cell </div>
-            </div>
-        </div>
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/null_cell.jpg" class="char_img">
-                <div class="char_name"> null_cell </div>
-            </div>
-        </div>
-        <div class="list-row" draggable="false">
-            <div class="list-cell" draggable="true">
-                <img src="images/null_cell.jpg" class="char_img">
-                <div class="char_name"> null_cell </div>
+            <div id="gridcell16" class="grid-cell">
+                <img id="zack_and_aubrey_img" src="images/zack_and_aubrey.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="zack_and_aubrey_name" class="char_name"> Zack and Aubrey </div>
             </div>
         </div>
     </div>
 
-    <!-- <p><a href="index.html" id="reload">Click here</a> to create a new card</p> -->
+    <div id="list" class="list-container">
+        <div id=listrow1 class="list-row">
+            <div id=listcell1 class="list-cell">
+                <img id="lannister_tyrion_img" src="images/lannister_tyrion.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="lannister_tyrion_name" class="char_name"> Tyrion Lannister </div>
+            </div>
+        </div>
+        <div id=listrow2 class="list-row">
+            <div id=listcell2 class="list-cell">
+                <img id="brienne_of_tarth_img" src="images/brienne_of_tarth.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="brienne_of_tarth_name" class="char_name"> Brienne of Tarth </div>
+            </div>
+        </div>
+        <div id=listrow3 class="list-row">
+            <div id=listcell3 class="list-cell">
+                <img id="ygritte_img" src="images/ygritte.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="ygritte_name" class="char_name"> Ygritte </div>
+            </div>
+        </div>
+        <div id=listrow4 class="list-row">
+            <div id=listcell4 class="list-cell">
+                <img id="melisandre_img" src="images/melisandre.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="melisandre_name" class="char_name"> Melisandre </div>
+            </div>
+        </div>
+        <div id=listrow5 class="list-row">
+            <div id=listcell5 class="list-cell">
+                <img id="clegane_sandor_img" src="images/clegane_sandor.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="clegane_sandor_name" class="char_name"> Sandor Clegane </div>
+            </div>
+        </div>
+        <div id=listrow6 class="list-row">
+            <div id=listcell6 class="list-cell">
+                <img id="khal_drogo_img" src="images/khal_drogo.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="khal_drogo_name" class="char_name"> Khal Drogo </div>
+            </div>
+        </div>
+        <div id=listrow7 class="list-row">
+            <div id=listcell7 class="list-cell">
+                <img id="null_cell_img" src="images/null_cell.jpg" class="char_img" draggable="true"  ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="null_cell_name" class="char_name"> null_cell </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

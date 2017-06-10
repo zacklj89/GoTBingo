@@ -1,4 +1,5 @@
 window.onload = initAll;
+
 var usedNums = new Array(76);
 
 function initAll() {
